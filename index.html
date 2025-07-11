@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Tailwind Theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary_yellow: '#FACC15',
+                        secondary: '#1E293B',
+                        accent: '#F43F5E',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <link rel="icon" href="asset/logo.png" type="image/png">
+    <title>To Do It</title>
+</head>
+<body class="bg-white text-secondary font-sans">
+    <div class="flex justify-center pt-32 pb-10 px-4">
+        <div class="bg-white rounded-xl p-6 w-full max-w-xl shadow-[0_0_20px_rgba(0,0,0,0.2)]">
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-center mb-6 text-secondary">Todo List</h1>
+
+            <!-- Form -->
+            <div class="flex flex-col sm:flex-row gap-2 mb-4">
+                <input type="text" id="todo-input" placeholder="Add a todo ..." 
+                    class="text-base border border-primary_yellow rounded-xl px-4 py-2 flex-1" />
+                <input type="date" id="date-input" 
+                    class="text-base border border-primary_yellow rounded-xl px-4 py-2 flex-1" />
+                <button id="add-btn" 
+                    class="bg-primary_yellow hover:bg-yellow-500 text-black text-2xl sm:text-3xl px-4 py-2 rounded-xl w-full sm:w-auto">
+                    +
+                </button>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row justify-between gap-2 mb-4">
+                <div class="relative inline-block">
+                    <button id="filter-btn" 
+                        class="bg-secondary hover:bg-gray-800 text-white px-4 py-2 rounded-lg w-full sm:w-auto">
+                        FILTER
+                    </button>
+                    <div id="filter-menu" 
+                        class="hidden absolute mt-2 w-full sm:w-40 bg-white rounded-xl shadow-lg z-10">
+                        <button onclick="filterTodos('all')" class="block w-full text-left px-4 py-2 hover:bg-gray-100">All</button>
+                        <button onclick="filterTodos('pending')" class="block w-full text-left px-4 py-2 hover:bg-gray-100">Pending</button>
+                        <button onclick="filterTodos('completed')" class="block w-full text-left px-4 py-2 hover:bg-gray-100">Completed</button>
+                    </div>
+                </div>
+                <button id="delete-all-btn" 
+                    class="bg-primary_yellow hover:bg-yellow-500 text-black px-4 py-2 rounded-lg w-full sm:w-auto">
+                    DELETE ALL
+                </button>
+            </div>
+
+            <!-- Table -->
+            <div class="overflow-x-auto rounded-lg">
+                <table class="w-full border text-sm">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th class="py-2">Task</th>
+                            <th class="py-2">Due Date</th>
+                            <th class="py-2">Status</th>
+                            <th class="py-2">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="todo-list" class="text-center">
+                        <tr>
+                            <td colspan="4" class="py-4">No task found</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center text-sm text-secondary pt-16 pb-10">
+        Made by <b>Rizky Hanifa Afania</b>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>
